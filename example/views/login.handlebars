@@ -1,0 +1,29 @@
+<p data-client="app" class="slbutton login">&#9889; SecureLogin App</p>
+<p data-client="web" class="slbutton login">Web</p>
+<p data-client="ext" class="slbutton login">Ext</p>
+<p><a href="https://securelogin.pw/">Never used SecureLogin before?</a></p>
+</p>
+<script>
+    var clients = document.querySelectorAll('.login');
+
+    for (var i = 0; i < clients.length; i++) {
+        clients[i].addEventListener('click', function(event) {
+            var use_client = this.dataset.client;
+            localStorage.securelogin = use_client;
+
+            SecureLogin(function(sltoken) {
+                xhr('/login', {
+                    sltoken: sltoken,
+                }, function(d) {
+                    if (d === 200) {
+                        location.reload();
+                    } else {
+                        console.log(d);
+                    }
+                })
+            }, use_client);
+
+            return false;
+        });
+    }
+</script>

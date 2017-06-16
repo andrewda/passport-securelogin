@@ -1,0 +1,14 @@
+{
+  "name": "passport-securelogin",
+  "version": "0.0.1",
+  "description": "A Passport strategy for SecureLogin authentication",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "securelogin": "0.0.2"
+  },
+  "author": "Andrew Dassonville <dassonville.andrew@gmail.com>",
+  "license": "MIT"
+}

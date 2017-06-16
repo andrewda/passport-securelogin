@@ -1,0 +1,56 @@
+<h2>Logged in as {{{user.email}}}</h2>
+
+<form id="withdraw_form">
+    <p>SecureLogin protects critical actions such as money transfer with a cryptographic signature. Type anything:</p>
+    <p><input id="amount" name="amount" type="number" placeholder="Amount"></p>
+    <p><input id="addr" name="addr" placeholder="Address"></p>
+    <p><input class="slbutton" value="Send Money" type=submit></p>
+</form>
+
+<p><span class="slbutton" id="deleteaccount">Delete Account</span></p>
+<p><a href="/logout"><span class="slbutton">Log Out</span></a></p>
+
+<script>
+    SecureLogin.pubkey = '{{{user.pubkey}}}'
+
+    withdraw_form.onsubmit = function() {
+        console.log('submitting')
+        SecureLogin(function(sltoken) {
+            console.log(sltoken)
+            xhr('/sendmoney', {
+                amount: amount.value,
+                address: addr.value,
+                sltoken: sltoken
+            }, function(d, r) {
+                var response = JSON.parse(r);
+                alert('Sent $' + response.amount + ' to ' + response.address);
+
+                console.log(response);
+
+                // clear amount and address
+                amount.value = '';
+                addr.value = '';
+            })
+
+        }, localStorage.securelogin, {
+            action: 'Money Transfer',
+            amount: amount.value,
+            address: addr.value
+        });
+
+        return false;
+    }
+
+    deleteaccount.onclick = function() {
+        SecureLogin(function(sltoken) {
+            xhr('/delete', {
+                sltoken: sltoken
+            }, function(d) {
+                location.reload()
+            })
+        }, localStorage.securelogin, {
+            mode: 'delete'
+        })
+        return false;
+    }
+</script>

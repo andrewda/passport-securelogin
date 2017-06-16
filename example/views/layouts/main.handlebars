@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureLogin Example</title>
+    <script src="/sdk.js"></script>
+</head>
+
+<body>
+
+    <script>
+        function xhr(url, data, cb) {
+            var x = new XMLHttpRequest
+            x.open('POST', url)
+            x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            json = data;
+            json = Object.keys(json).map(function(key) {
+                return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
+            }).join('&');
+            x.send(json);
+
+            x.onreadystatechange = function() {
+                if (x.readyState == 4) {
+                    if (cb && x.response.length > 1) cb(x.status, x.response)
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .slbutton {
+            background-color: #fff;
+            color: #000;
+            padding: 0.5em 1em;
+            border: 1px solid #000;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: "Roboto", Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+            position: relative;
+            display: inline-block;
+        }
+    </style>
+
+    {{{body}}}
+
+</body>
+
+</html>
