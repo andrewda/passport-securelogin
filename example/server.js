@@ -53,8 +53,10 @@ app.get('/logout', (req, res) => {
 // Handle custom route – `req.scope` will contain an object with the verified scope if sucessfull
 app.post('/sendmoney', SecureLogin.Middleware({ domains: DOMAINS }),
     (req, res) => {
-        console.log(`[TRANSFER] ${req.user.email} -> $${req.scope.amount} -> ${req.scope.address}`);
-        res.json(req.scope);
+        const scope = req.securelogin.scope;
+
+        console.log(`[TRANSFER] ${req.user.email} -> $${scope.amount} -> ${scope.address}`);
+        res.json(scope);
     });
 
 app.listen(process.env.PORT || 3001);
