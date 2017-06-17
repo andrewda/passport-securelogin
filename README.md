@@ -67,7 +67,7 @@ app.post('/sendmoney', SecureLogin.Middleware({ domains: 'http://c.dev:3001' }),
 When SecureLogin responds to the `/sendmoney` callback URL (which we define in
 the client-side JavaScript), the middleware will verify the response and set
 `req.securelogin.scope` to the verified scope if the verification is successful.
-Otherwise, `req.securelogin.error` will contain the error.
+Otherwise, `req.securelogin.errors` will contain the errors.
 
 ## Example
 

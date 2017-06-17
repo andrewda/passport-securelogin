@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "securelogin": "0.0.2"
+    "securelogin": "0.1.0"
   },
   "author": "Andrew Dassonville <dassonville.andrew@gmail.com>",
   "license": "MIT"
