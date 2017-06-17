@@ -7,7 +7,6 @@
     <p><button class="slbutton" type="submit">Send Money</button></p>
 </form>
 
-<p><span class="slbutton" id="deleteaccount">Delete Account</span></p>
 <p><a href="/logout"><span class="slbutton">Log Out</span></a></p>
 
 <script>
@@ -36,19 +35,6 @@
             address: addr.value
         });
 
-        return false;
-    }
-
-    deleteaccount.onclick = function() {
-        SecureLogin(function(sltoken) {
-            xhr('/delete', {
-                sltoken: sltoken
-            }, function(d) {
-                location.reload()
-            })
-        }, localStorage.securelogin, {
-            mode: 'delete'
-        })
         return false;
     }
 </script>
