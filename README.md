@@ -74,4 +74,5 @@ Otherwise, `req.securelogin.error` will contain the error.
 An example application can be found in the `/example` directory. To run the
 example, `cd` into the directory, `npm install` the dependencies, then run
 `node server`. You should be able to visit `http://localhost:3001` to see the
-live app. A working heroku
+app. This example is also running at https://passport-securelogin.herokuapp.com
+if you would like to take a look.
