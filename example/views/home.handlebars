@@ -14,9 +14,7 @@
     SecureLogin.pubkey = '{{{user.pubkey}}}'
 
     withdraw_form.onsubmit = function() {
-        console.log('submitting')
         SecureLogin(function(sltoken) {
-            console.log(sltoken)
             xhr('/sendmoney', {
                 amount: amount.value,
                 address: addr.value,
