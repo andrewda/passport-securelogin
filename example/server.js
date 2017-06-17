@@ -7,7 +7,7 @@ const passport = require('passport');
 const SecureLogin = require('../lib');
 
 // App domains – will be checked against provider and client
-const DOMAINS = [ 'localhost:3001', 'http://c.dev:3001' ];
+const DOMAINS = process.env.DOMAINS || [ 'localhost:3001', 'http://c.dev:3001' ];
 
 // Tell Passport to use the SecureLogin strategy
 passport.use(new SecureLogin.Strategy({ domains: DOMAINS },
