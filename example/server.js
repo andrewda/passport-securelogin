@@ -57,4 +57,4 @@ app.post('/sendmoney', SecureLogin.Middleware({ domains: DOMAINS }),
         res.json(req.scope);
     });
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
