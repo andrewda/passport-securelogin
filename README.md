@@ -39,7 +39,7 @@ private blog).
 passport.use(new SecureLogin.Strategy({ domains: 'http://c.dev:3001' },
     (user, done) => {
         // Do some verification here, then call `done(err, user, info)`
-        if (user.pubkey === 'WfgIE2wK/9N3PQE5KpZOCwNEPVAFV3c8T6NweX+dSos=') {
+        if (user.authkeys.public === 'WfgIE2wK/9N3PQE5KpZOCwNEPVAFV3c8T6NweX+dSos=') {
             done(null, user);
         } else {
             done(null, false, 'not allowed to authenticate');
@@ -59,8 +59,8 @@ using something like the following Express route:
 ```javascript
 app.post('/sendmoney', SecureLogin.Middleware({ domains: 'http://c.dev:3001' }),
     (req, res) => {
-        console.log(`${req.user.pubkey} -> $${req.scope.amount} -> ${req.scope.address}`);
-        res.json(req.scope);
+        console.log(`${req.user.authkeys.public} -> $${req.securelogin.scope.amount} -> ${req.securelogin.scope.address}`);
+        res.json(req.securelogin.scope);
     });
 ```
 
