@@ -40,6 +40,17 @@ app.get('/', (req, res) => {
     else res.render('login');
 });
 
+// Allow users to update their information from SecureLogin
+app.post('/securelogin', SecureLogin.SLMiddleware({ domains: DOMAINS },
+    (err, newUser, oldPublicKey) => {
+        if (err) {
+            console.log(err);
+        } else {
+            // Update user's database with the new profile info
+            console.log(newUser, oldPublicKey);
+        }
+    }));
+
 // Use the SecureLogin strategy to login and send a 200 status code
 app.post('/login', passport.authenticate('securelogin', { session: true }),
     (req, res) => res.sendStatus(200));
@@ -51,7 +62,7 @@ app.get('/logout', (req, res) => {
 });
 
 // Handle custom route – `req.scope` will contain an object with the verified scope if sucessfull
-app.post('/sendmoney', SecureLogin.Middleware({ domains: DOMAINS }),
+app.post('/sendmoney', SecureLogin.ScopeMiddleware({ domains: DOMAINS }),
     (req, res) => {
         const scope = req.securelogin.scope;
 

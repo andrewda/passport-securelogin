@@ -57,7 +57,7 @@ the person who they claim to be. This can be easily done using this module by
 using something like the following Express route:
 
 ```javascript
-app.post('/sendmoney', SecureLogin.Middleware({ domains: 'http://c.dev:3001' }),
+app.post('/sendmoney', SecureLogin.ScopeMiddleware({ domains: 'http://c.dev:3001' }),
     (req, res) => {
         console.log(`${req.user.authkeys.public} -> $${req.securelogin.scope.amount} -> ${req.securelogin.scope.address}`);
         res.json(req.securelogin.scope);

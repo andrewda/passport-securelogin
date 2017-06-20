@@ -11,8 +11,12 @@ describe('passport-securelogin', () => {
         expect(strategy.Strategy).to.be.a('function');
     });
 
-    it('should export Middleware constructor', () => {
-        expect(strategy.Middleware).to.be.a('function');
+    it('should export SLMiddleware constructor', () => {
+        expect(strategy.SLMiddleware).to.be.a('function');
+    });
+
+    it('should export ScopeMiddleware constructor', () => {
+        expect(strategy.ScopeMiddleware).to.be.a('function');
     });
 
 });
