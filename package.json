@@ -4,11 +4,21 @@
   "description": "A Passport strategy for SecureLogin authentication",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node server.js"
+    "test": "nyc --reporter=html --reporter=text mocha --reporter spec --require test/bootstrap/node test/*.test.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "securelogin": "^0.2.1"
   },
   "author": "Andrew Dassonville <dassonville.andrew@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "body-parser": "^1.17.2",
+    "chai": "^4.0.2",
+    "express": "^4.15.3",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.2",
+    "passport": "^0.3.2",
+    "supertest": "^3.0.0"
+  }
 }
