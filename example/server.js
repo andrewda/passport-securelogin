@@ -6,12 +6,11 @@ const fs = require('fs');
 const passport = require('passport');
 const SecureLogin = require('../lib');
 
-// App domains – will be checked against provider and client
-const DOMAINS = process.env.DOMAINS || [ 'localhost:3001', 'http://c.dev:3001' ];
+// App origins – will be checked against provider and client
+SecureLogin.origins = process.env.DOMAINS || [ 'localhost:3001', 'http://c.dev:3001' ];
 
 // Tell Passport to use the SecureLogin strategy
-passport.use(new SecureLogin.Strategy({ domains: DOMAINS },
-    (user, done) => done(null, user)));
+passport.use(new SecureLogin.Strategy((user, done) => done(null, user)));
 
 // Serialize and deserialize users – In an actual app, you would use these to fetch user data
 // https://stackoverflow.com/a/27637668/2396125
@@ -41,8 +40,7 @@ app.get('/', (req, res) => {
 });
 
 // Allow users to update their information from SecureLogin
-app.post('/securelogin', SecureLogin.SLMiddleware({ domains: DOMAINS },
-    (err, newUser, oldPublicKey) => {
+app.post('/securelogin', SecureLogin.SLMiddleware((err, newUser, oldPublicKey) => {
         if (err) {
             console.log(err);
         } else {
@@ -62,8 +60,7 @@ app.get('/logout', (req, res) => {
 });
 
 // Handle custom route – `req.scope` will contain an object with the verified scope if sucessfull
-app.post('/sendmoney', SecureLogin.ScopeMiddleware({ domains: DOMAINS }),
-    (req, res) => {
+app.post('/sendmoney', SecureLogin.ScopeMiddleware(), (req, res) => {
         const scope = req.securelogin.scope;
 
         console.log(`[TRANSFER] ${req.user.email} -> $${scope.amount} -> ${scope.address}`);

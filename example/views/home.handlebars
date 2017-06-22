@@ -15,8 +15,6 @@
     withdraw_form.onsubmit = function() {
         SecureLogin(function(sltoken) {
             xhr('/sendmoney', {
-                amount: amount.value,
-                address: addr.value,
                 sltoken: sltoken
             }, function(d, r) {
                 var response = JSON.parse(r);
@@ -27,8 +25,7 @@
                 // clear amount and address
                 amount.value = '';
                 addr.value = '';
-            })
-
+            });
         }, localStorage.securelogin, {
             action: 'Money Transfer',
             amount: amount.value,
