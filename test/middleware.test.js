@@ -13,8 +13,9 @@ describe('Middleware', () => {
     const validTokenWithScope = decodeURIComponent('http%3A%2F%2Flocalhost%3A3001%252Chttp%3A%2F%2Flocalhost%3A3001%252Caction%3DMoney%25252520Transfer%26amount%3D100%26address%3Dabcdefg%252C4651521845%2CQdFNqTrq%2FmjiflYNY70GIQkT0i2HbO0JdByVwWxFn4igkdviZV0OSAUjZbkb%2BMsqVhihuDUR%2BRFgiqJYerG1Bg%3D%3D%252CpXMsCTzTkbf0H0844zdaj79MQDNVbhJou%2BHq8laFLJ4%3D%2CFPS%2FonjSa0ojlSzp9zXEiot5MgZcMwXR0sAIdgJMxaE%3D%252CbruQ61utUBPay5QJ6Rity4S6AW%2Bsma4NTt%2B7udhMveM%3D%2Cexample%40email.com');
 
     const validTokenWithScopeSuccess = {
+        _raw: 'action=Money%20Transfer&amount=100&address=abcdefg',
         action: 'Money Transfer',
-        amount: 100,
+        amount: '100',
         address: 'abcdefg'
     };
 

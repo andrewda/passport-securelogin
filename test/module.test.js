@@ -4,7 +4,6 @@ describe('passport-securelogin', () => {
 
     it('should export Strategy constructor directly from package', () => {
         expect(strategy).to.be.a('function');
-        expect(strategy).to.equal(strategy.Strategy);
     });
 
     it('should export Strategy constructor', () => {
