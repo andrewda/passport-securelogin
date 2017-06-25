@@ -1,6 +1,7 @@
 # Passport SecureLogin
 
 [![Travis][travis-img]][travis-url]
+[![Coveralls][coveralls-img]][coveralls-url]
 [![Release][release-img]][release-url]
 [![Downloads][downloads-img]][downloads-url]
 [![License][license-img]][license-url]
@@ -108,6 +109,8 @@ if you would like to take a look.
 
 [travis-img]: https://img.shields.io/travis/andrewda/passport-securelogin.svg?style=flat-square
 [travis-url]: https://travis-ci.org/andrewda/passport-securelogin
+[coveralls-img]: https://img.shields.io/coveralls/andrewda/passport-securelogin.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/github/andrewda/passport-securelogin
 [release-img]: https://img.shields.io/npm/v/passport-securelogin.svg?style=flat-square
 [release-url]: https://www.npmjs.com/package/passport-securelogin
 [downloads-img]: https://img.shields.io/npm/dm/passport-securelogin.svg?style=flat-square
