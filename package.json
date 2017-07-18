@@ -8,6 +8,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
+    "passport-strategy": "^1.0.0",
     "securelogin": "^0.4.1"
   },
   "author": "Andrew Dassonville <dassonville.andrew@gmail.com>",
